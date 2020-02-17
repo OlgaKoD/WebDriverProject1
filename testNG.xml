@@ -4,7 +4,7 @@
     <parameter name="num" value="[^0-9]"/>
     <test name="first" >
         <classes>
-            <class name="test.java.MyWebTests.Program1" />
+            <class name="main.java.WebDriverLesson.Program1" />
         </classes>
     </test>/>
     <parameter name="phone"  value="0800212407"/>
