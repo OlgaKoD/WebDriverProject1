@@ -19,5 +19,4 @@
             <class name="test.java.MyWebTests.UInegativeTest" />
         </classes>
     </test>
-    <!--Your comment-->
 </suite>
