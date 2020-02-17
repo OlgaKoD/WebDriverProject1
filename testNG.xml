@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Suite1">
+    <parameter name="itea"  value="http://iteaua-develop.demo.gns-it.com/"/>
+    <parameter name="num" value="[^0-9]"/>
+    <test name="first" >
+        <classes>
+            <class name="main.java.WebDriverLesson.Program1" />
+        </classes>
+    </test>/>
+    <parameter name="phone"  value="0800212407"/>
+    <test name="positive" >
+        <classes>
+            <class name="test.java.MyWebTests.UIpositiveTest" />
+        </classes>
+    </test>
+    <parameter name="exp"  value="border-color: red;"/>
+    <test name="negative" >
+        <classes>
+            <class name="test.java.MyWebTests.UInegativeTest" />
+        </classes>
+    </test>
+</suite>
