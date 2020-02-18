@@ -58,11 +58,11 @@ public class UInegativeTest {
         WebElement phoneEl = driver.findElement(phoneInput);
         waitForPresence.until(ExpectedConditions.attributeContains(phoneEl, "style", color));
 
-        String actual2 = phoneEl.getAttribute("style");
-        System.out.println(actual2);
-        String expected2 = color;
-        assertEquals(actual2, expected2,
-                String.format("Expected %s to be equal %s", actual2, expected2));
+        String actualSecond = phoneEl.getAttribute("style");
+        System.out.println(actualSecond);
+        String expectedSecond = color;
+        assertEquals(actualSecond, expectedSecond,
+                String.format("Expected %s to be equal %s", actualSecond, expectedSecond));
     }
 
     @AfterMethod

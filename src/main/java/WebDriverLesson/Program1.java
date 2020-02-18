@@ -31,10 +31,10 @@ public class Program1 {
         WebElement phones = driver.findElement(phoneblock);
 
         String phone = phones.getText();
-        String phone2 = phone.replaceAll(numbers, "");
-        phone2 = phone2.substring(phone2.length() - 10);
+        String phoneSecond = phone.replaceAll(numbers, "");
+        phoneSecond = phoneSecond.substring(phoneSecond.length() - 10);
 
-        System.out.println(phone2);
+        System.out.println(phoneSecond);
     }
 
     @AfterMethod
