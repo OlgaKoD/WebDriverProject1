@@ -12,19 +12,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import test.java.MyWebTests.PO.EveningCoursesPage;
 
-public class Program1 {
+public class FirstProgram {
     WebDriver driver;
     WebDriverWait waitForPresence;
-    Logger logger = LogManager.getLogger(Program1.class);
+    Logger logger = LogManager.getLogger(FirstProgram.class);
 
     @BeforeMethod
     public void SetUp() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         waitForPresence = new WebDriverWait(driver, 15);
-        logger.debug("Class " + Program1.class + " initialized with driver");
+        logger.debug("Class " + FirstProgram.class + " initialized with driver");
         logger.info("Start initializing class");
     }
 

@@ -1,14 +1,9 @@
 package test.java.MyWebTests;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.MyWebTests.PO.EveningCoursesPage;
-import test.java.MyWebTests.PO.HomePage;
-import test.java.MyWebTests.PO.VacancyPage;
-import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -16,7 +11,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForPO2 extends BaseTest {
+public class SecondForPO extends BaseTest {
     EveningCoursesPage eveningCoursesPage;
     @BeforeMethod
     public void PageLoad() {
@@ -78,11 +73,7 @@ public class ForPO2 extends BaseTest {
         Collections.sort(actualList);
         Collections.sort(expectedList);
 
-
-
-
         assertEquals(actualList, expectedList);
-
     }
 
     @Test(dataProvider = "CoursesBuy")

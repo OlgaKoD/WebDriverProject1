@@ -14,8 +14,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-import static org.testng.Assert.assertEquals;
-
 public class UIpositiveTest {
     WebDriver driver;
     WebDriverWait waitForPresence;
@@ -32,7 +30,7 @@ public class UIpositiveTest {
 
     @Parameters({"phone"})
     @Test
-    public void checkStyle1(String ph) throws InterruptedException {
+    public void checkStyleFirst(String ph) throws InterruptedException {
         driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
         logger.debug("HomePage was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("HomePage was opened");
@@ -57,7 +55,7 @@ public class UIpositiveTest {
         logger.info("Phone number was input");
 
 
-        By sendInput = By.xpath("//input[@value='Надіслати']");
+        By sendInput = By.xpath("//input[@value='Íàä³ñëàòè']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(sendInput));
         WebElement sendEl = driver.findElement(sendInput);
         sendEl.click();
@@ -72,15 +70,15 @@ public class UIpositiveTest {
         logger.debug("Callback Msg was received, method is working, locator is available");
         logger.info("Callback Msg was received");
 
-        String expected = "Дякуємо!\n" +
-                "Наш менеджер зв'яжеться з Вами.";
+        String expected = "Äÿêóºìî!\n" +
+                "Íàø ìåíåäæåð çâ'ÿæåòüñÿ ç Âàìè.";
         assertEquals(actual, expected,
                 String.format("Expected %s to be equal %s", expected, actual));
         logger.debug("Callback Msg was right, method is worked, locator is available");
         logger.info("Callback Msg was right");
     }
     @AfterMethod
-    public void tearDown(UIpositiveTest actual) {
+    public void tearDown() {
         driver.quit();
     }
 }
