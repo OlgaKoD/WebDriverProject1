@@ -30,7 +30,7 @@ public class UIpositiveTest {
 
     @Parameters({"phone"})
     @Test
-    public void checkStyle1(String ph) throws InterruptedException {
+    public void checkStyleFirst(String ph) throws InterruptedException {
         driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
         logger.debug("HomePage was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("HomePage was opened");
@@ -55,7 +55,7 @@ public class UIpositiveTest {
         logger.info("Phone number was input");
 
 
-        By sendInput = By.xpath("//input[@value='Надіслати']");
+        By sendInput = By.xpath("//input[@value='ГЌГ Г¤ВіГ±Г«Г ГІГЁ']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(sendInput));
         WebElement sendEl = driver.findElement(sendInput);
         sendEl.click();
@@ -70,8 +70,8 @@ public class UIpositiveTest {
         logger.debug("Callback Msg was received, method is working, locator is available");
         logger.info("Callback Msg was received");
 
-        String expected = "Дякуємо!\n" +
-                "Наш менеджер зв'яжеться з Вами.";
+        String expected = "Г„ГїГЄГіВєГ¬Г®!\n" +
+                "ГЌГ Гё Г¬ГҐГ­ГҐГ¤Г¦ГҐГ° Г§Гў'ГїГ¦ГҐГІГјГ±Гї Г§ Г‚Г Г¬ГЁ.";
         assertEquals(actual, expected,
                 String.format("Expected %s to be equal %s", expected, actual));
         logger.debug("Callback Msg was right, method is worked, locator is available");
