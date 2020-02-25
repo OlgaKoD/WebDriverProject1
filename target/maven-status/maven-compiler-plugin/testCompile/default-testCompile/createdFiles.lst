@@ -1,1 +1,9 @@
-test\java\WebTest.class
+test\java\MyWebTests\ForPO2.class
+test\java\MyWebTests\BaseTest.class
+test\java\MyWebTests\ForPO.class
+test\java\MyWebTests\PO\EveningCoursesPage.class
+test\java\MyWebTests\UIpositiveTest.class
+test\java\MyWebTests\Program1.class
+test\java\MyWebTests\UInegativeTest.class
+test\java\MyWebTests\PO\VacancyPage.class
+test\java\MyWebTests\PO\HomePage.class

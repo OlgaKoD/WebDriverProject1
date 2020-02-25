@@ -32,7 +32,6 @@ public class EveningCoursesPage {
 
     }
     public EveningCoursesPage openEveningCourses() {
-
         WebElement eveningCoursesBtn = driver.findElement(By.xpath("//a[(contains(@href, 'courses_itea')) and @class='parent']"));
         wait.until(ExpectedConditions.visibilityOf(eveningCoursesBtn));
         eveningCoursesBtn.click();
