@@ -34,7 +34,7 @@ public class UInegativeTest {
         WebElement callBackEl = driver.findElement(callBack);
         callBackEl.click();
 
-        By sendInput = By.xpath("//input[@value='Íàä³ñëàòè']");
+        By sendInput = By.xpath("//input[@value='Надіслати']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(sendInput));
         WebElement sendEl = driver.findElement(sendInput);
         sendEl.click();
