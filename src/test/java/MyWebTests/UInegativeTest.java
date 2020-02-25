@@ -27,14 +27,14 @@ public class UInegativeTest {
 
     @Parameters({"exp"})
     @Test
-    public void checkStyle2(String color) throws InterruptedException {
+    public void checkStyleSecond(String color) throws InterruptedException {
         driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
         By callBack = By.xpath("//a[@class='callback-btn']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(callBack));
         WebElement callBackEl = driver.findElement(callBack);
         callBackEl.click();
 
-        By sendInput = By.xpath("//input[@value='Надіслати']");
+        By sendInput = By.xpath("//input[@value='ГЌГ Г¤ВіГ±Г«Г ГІГЁ']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(sendInput));
         WebElement sendEl = driver.findElement(sendInput);
         sendEl.click();
