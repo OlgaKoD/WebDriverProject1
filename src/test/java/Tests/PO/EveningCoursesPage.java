@@ -1,4 +1,4 @@
-package test.java.MyWebTests.PO;
+package test.java.Tests.PO;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class EveningCoursesPage {
 
     }
     public EveningCoursesPage openHomePage() {
-        driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
+        driver.get(PropertyLoader.getProperty("uaLink"));
         logger.debug("HomePage was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("HomePage was opened");
         logger.error("HomePage wasn't opened");

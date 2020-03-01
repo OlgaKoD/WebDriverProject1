@@ -1,9 +1,11 @@
-package test.java.MyWebTests;
+package test.java.Tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import test.java.MyWebTests.PO.EveningCoursesPage;
+import test.java.Tests.PO.EveningCoursesPage;
+import test.java.utils.RetryAnalyzer;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -23,7 +25,7 @@ public class SecondForPO extends BaseTest {
         return new Object[][] {
                 {"Frontend development",
                 "JS development",
-                "Веб-дизайн",
+                "Р’РµР±-РґРёР·Р°Р№РЅ",
                 "PHP",
                 "Java programming",
                 "Python",
@@ -33,15 +35,15 @@ public class SecondForPO extends BaseTest {
                 "Game Development",
                 "DEVOPS",
                 "Digital Marketing",
-                "Управління персоналом",
-                "Управління проектами",
+                "РЈРїСЂР°РІР»С–РЅРЅСЏ РїРµСЂСЃРѕРЅР°Р»РѕРј",
+                "РЈРїСЂР°РІР»С–РЅРЅСЏ РїСЂРѕРµРєС‚Р°РјРё",
                 "Mobile development",
-                "Відеомонтаж",
+                "Р’С–РґРµРѕРјРѕРЅС‚Р°Р¶",
                 "Cisco",
                 "Go development",
-                "Кібербезпека",
-                "Менеджмент",
-                "Тестування"}
+                "РљС–Р±РµСЂР±РµР·РїРµРєР°",
+                "РњРµРЅРµРґР¶РјРµРЅС‚",
+                "РўРµСЃС‚СѓРІР°РЅРЅСЏ"}
         };
     }
 
@@ -50,7 +52,7 @@ public class SecondForPO extends BaseTest {
         return new Object[][] {
                 {"Frontend development"},
                 {"JS development"},
-                {"Веб-дизайн"}
+                {"Р’РµР±-РґРёР·Р°Р№РЅ"}
         };
     }
 
