@@ -1,4 +1,4 @@
-package test.java.MyWebTests;
+package test.java.Tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,12 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import test.java.utils.PropertyLoader;
+import test.java.utils.RetryAnalyzer;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 
 public class UInegativeTest {
@@ -19,16 +23,17 @@ public class UInegativeTest {
     WebDriverWait waitForPresence;
 
     @BeforeMethod
-    public void SetUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    public void SetUp(ITestContext context) {
+        System.setProperty(PropertyLoader.getProperty("wDriver"), PropertyLoader.getProperty("driverFile"));
         driver = new ChromeDriver();
+        context.setAttribute(PropertyLoader.getProperty("strDriver"), driver);
         waitForPresence = new WebDriverWait(driver, 15);
     }
 
     @Parameters({"exp"})
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void checkStyleSecond(String color) throws InterruptedException {
-        driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
+        driver.get(PropertyLoader.getProperty("uaLink"));
         By callBack = By.xpath("//a[@class='callback-btn']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(callBack));
         WebElement callBackEl = driver.findElement(callBack);
@@ -58,7 +63,7 @@ public class UInegativeTest {
         String actualSecond = phoneEl.getAttribute("style");
         System.out.println(actualSecond);
         String expectedSecond = color;
-        assertEquals(actualSecond, expectedSecond,
+        assertNotEquals(actualSecond, expectedSecond,
                 String.format("Expected %s to be equal %s", actualSecond, expectedSecond));
     }
 

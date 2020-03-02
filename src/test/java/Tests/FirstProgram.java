@@ -1,4 +1,4 @@
-package test.java.MyWebTests;
+package test.java.Tests;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -8,10 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import test.java.utils.PropertyLoader;
+import test.java.utils.RetryAnalyzer;
 
 public class FirstProgram {
     WebDriver driver;
@@ -19,9 +22,10 @@ public class FirstProgram {
     Logger logger = LogManager.getLogger(FirstProgram.class);
 
     @BeforeMethod
-    public void SetUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    public void SetUp(ITestContext context) {
+        System.setProperty(PropertyLoader.getProperty("wDriver"), PropertyLoader.getProperty("driverFile"));
         driver = new ChromeDriver();
+        context.setAttribute(PropertyLoader.getProperty("strDriver"), driver);
         waitForPresence = new WebDriverWait(driver, 15);
         logger.debug("Class " + FirstProgram.class + " initialized with driver");
         logger.info("Start initializing class");

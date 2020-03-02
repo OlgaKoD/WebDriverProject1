@@ -1,4 +1,4 @@
-package test.java.MyWebTests.PO;
+package test.java.Tests.PO;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

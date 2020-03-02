@@ -1,4 +1,4 @@
-package test.java.MyWebTests;
+package test.java.Tests;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -8,11 +8,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import test.java.utils.PropertyLoader;
+import test.java.utils.RetryAnalyzer;
+
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 public class UIpositiveTest {
     WebDriver driver;
@@ -20,9 +25,10 @@ public class UIpositiveTest {
     Logger logger = LogManager.getLogger(UIpositiveTest.class);
 
     @BeforeMethod
-    public void SetUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    public void SetUp(ITestContext context) {
+        System.setProperty(PropertyLoader.getProperty("wDriver"), PropertyLoader.getProperty("driverFile"));
         driver = new ChromeDriver();
+        context.setAttribute(PropertyLoader.getProperty("strDriver"), driver);
         waitForPresence = new WebDriverWait(driver,15);
         logger.debug("Class " + UIpositiveTest.class + " initialized with driver");
         logger.info("Start initializing class");
@@ -31,7 +37,7 @@ public class UIpositiveTest {
     @Parameters({"phone"})
     @Test
     public void checkStyleFirst(String ph) throws InterruptedException {
-        driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
+        driver.get(PropertyLoader.getProperty("uaLink"));
         logger.debug("HomePage was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("HomePage was opened");
         logger.error("HomePage wasn't opened");
@@ -70,9 +76,9 @@ public class UIpositiveTest {
         logger.debug("Callback Msg was received, method is working, locator is available");
         logger.info("Callback Msg was received");
 
-        String expected = "Äÿêóºìî!\n" +
-                "Íàø ìåíåäæåð çâ'ÿæåòüñÿ ç Âàìè.";
-        assertEquals(actual, expected,
+        String expected = "Дякуємо!\n" +
+                "Наш менеджер зв'яжеться з Вами.";
+        assertNotEquals(actual, expected,
                 String.format("Expected %s to be equal %s", expected, actual));
         logger.debug("Callback Msg was right, method is worked, locator is available");
         logger.info("Callback Msg was right");

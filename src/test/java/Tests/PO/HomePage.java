@@ -1,4 +1,4 @@
-package test.java.MyWebTests.PO;
+package test.java.Tests.PO;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 public class HomePage {
     WebDriver driver;
@@ -19,7 +20,7 @@ public class HomePage {
         logger.info("Start initializing class");
     }
     public HomePage open() {
-        driver.get("http://iteaua-develop.demo.gns-it.com/about-itea/");
+        driver.get(PropertyLoader.getProperty("aboutLink"));
         logger.debug("Home page was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("Home page was opened");
         logger.error("Home page wasn't opened");

@@ -1,23 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Suite1">
-    <parameter name="itea"  value="http://iteaua-develop.demo.gns-it.com/"/>
+    <listeners>
+        <listener class-name="test.java.utils.TestListeners"/>
+        <listener class-name="test.java.utils.AnnotationTransformer"/>
+    </listeners>
+    <!--<parameter name="itea"  value="http://iteaua-develop.demo.gns-it.com/"/>
     <parameter name="num" value="[^0-9]"/>
     <test name="first" >
         <classes>
-            <class name="test.java.MyWebTests.FirstProgram" />
+            <class name="test.java.Tests.FirstProgram" >
+            </class>
         </classes>
-    </test>/>
+    </test>/>!-->
     <parameter name="phone"  value="0800212407"/>
     <test name="positive" >
         <classes>
-            <class name="test.java.MyWebTests.UIpositiveTest" />
+            <class name="test.java.Tests.UIpositiveTest">
+            </class>
         </classes>
     </test>
-    <parameter name="exp"  value="border-color: red;"/>
+    <parameter name="exp" value="border-color: red;"/>
     <test name="negative" >
         <classes>
-            <class name="test.java.MyWebTests.UInegativeTest" />
+            <class name="test.java.Tests.UInegativeTest">
+            </class>
         </classes>
     </test>
+    <!--<parameter name="language"  value="uk"/>
+    <test name="ukrmova">
+        <classes>
+            <class name="test.java.Tests.ForPO"/>
+        </classes>
+    </test>
+    <parameter name="languages"  value="(//a[text() = 'UA'])[1]"/>
+    <test name="ukrmovaSecond">
+        <classes>
+            <class name="test.java.Tests.ForPO"/>
+        </classes>
+    </test>
+    <test name="checkEveningCourses">
+        <classes>
+            <class name="test.java.Tests.SecondForPO"/>
+        </classes>
+    </test>!-->
 
 </suite>

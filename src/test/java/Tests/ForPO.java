@@ -1,4 +1,4 @@
-package test.java.MyWebTests;
+package test.java.Tests;
 
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebElement;
@@ -6,8 +6,10 @@ package test.java.MyWebTests;
         import org.testng.annotations.BeforeMethod;
         import org.testng.annotations.Parameters;
         import org.testng.annotations.Test;
-        import test.java.MyWebTests.PO.HomePage;
-        import test.java.MyWebTests.PO.VacancyPage;
+        import test.java.Tests.PO.HomePage;
+        import test.java.Tests.PO.VacancyPage;
+        import test.java.utils.RetryAnalyzer;
+
         import java.util.ArrayList;
         import java.util.List;
 
@@ -33,12 +35,12 @@ public class ForPO extends BaseTest {
                 .openAbout()
                 .openVacancies();
         vacancyPage
-                .selectVacancy("Викладач UX")
+                .selectVacancy("Р’РёРєР»Р°РґР°С‡ UX")
                 .setName("Vova")
                 .setEmail("email@email.com")
                 .submit();
         String actualMsg = vacancyPage.getPhoneErrorMsg();
-        String expectedMsg = "Поле не має бути пустим";
+        String expectedMsg = "РџРѕР»Рµ РЅРµ РјР°С” Р±СѓС‚Рё РїСѓСЃС‚РёРј";
         assertEquals(actualMsg, expectedMsg);
     }
     @Parameters({"languages"})
