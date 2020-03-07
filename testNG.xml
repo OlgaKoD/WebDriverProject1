@@ -5,14 +5,15 @@
         <listener class-name="test.java.utils.TestListeners"/>
         <listener class-name="test.java.utils.AnnotationTransformer"/>
     </listeners>
-    <!--<parameter name="itea"  value="http://iteaua-develop.demo.gns-it.com/"/>
+    <parameter name="itea"  value="http://iteaua-develop.demo.gns-it.com/"/>
     <parameter name="num" value="[^0-9]"/>
     <test name="first" >
         <classes>
             <class name="test.java.Tests.FirstProgram" >
             </class>
         </classes>
-    </test>/>!-->
+    </test>
+    <parameter name="name"  value="Vasiliy Pupkin"/>
     <parameter name="phone"  value="0800212407"/>
     <test name="positive" >
         <classes>
@@ -27,13 +28,13 @@
             </class>
         </classes>
     </test>
-    <!--<parameter name="language"  value="uk"/>
+    <parameter name="language"  value="uk"/>
     <test name="ukrmova">
         <classes>
             <class name="test.java.Tests.ForPO"/>
         </classes>
     </test>
-    <parameter name="languages"  value="(//a[text() = 'UA'])[1]"/>
+    <parameter name="languages"  value="UA"/>
     <test name="ukrmovaSecond">
         <classes>
             <class name="test.java.Tests.ForPO"/>
@@ -43,6 +44,11 @@
         <classes>
             <class name="test.java.Tests.SecondForPO"/>
         </classes>
-    </test>!-->
+    </test>
+    <test name="checkCoursesBuy">
+        <classes>
+            <class name="test.java.Tests.ThirdForPO"/>
+        </classes>
+    </test>
 
 </suite>

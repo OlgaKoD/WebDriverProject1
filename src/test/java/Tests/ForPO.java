@@ -1,5 +1,9 @@
 package test.java.Tests;
 
+        import io.qameta.allure.Epic;
+        import io.qameta.allure.Feature;
+        import io.qameta.allure.Step;
+        import io.qameta.allure.Story;
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebElement;
         import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,7 +18,7 @@ package test.java.Tests;
         import java.util.List;
 
         import static org.testng.Assert.assertEquals;
-
+@Epic("Page Object")
 public class ForPO extends BaseTest {
     HomePage homePage;
     VacancyPage vacancyPage;
@@ -26,6 +30,7 @@ public class ForPO extends BaseTest {
 
     }
     @Parameters({"language"})
+    @Story("Select UX vacancy")
     @Test
     public void anyTest(String ukrainian) {
 
@@ -44,12 +49,14 @@ public class ForPO extends BaseTest {
         assertEquals(actualMsg, expectedMsg);
     }
     @Parameters({"languages"})
+    @Story("Check languages")
     @Test
+    @Step("Checking language {linkFirst}")
     public void checkLang(String linkFirst) {
         int arr[] = {2, 4, 6, 8, 1, 1};
         List<String> a = new ArrayList<String>();
         homePage.open();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(linkFirst))));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("(//a[text() = '"+linkFirst+"'])[1]"))));
 
         List<WebElement> list = driver.findElements(By.xpath("(//ul[@class='lang'])[1]//a"));
         System.out.println(list.get(0).getText());

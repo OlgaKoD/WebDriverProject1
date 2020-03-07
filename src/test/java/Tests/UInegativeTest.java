@@ -1,8 +1,10 @@
 package test.java.Tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +19,7 @@ import test.java.utils.RetryAnalyzer;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
-
+@Epic("Without PO")
 public class UInegativeTest {
     WebDriver driver;
     WebDriverWait waitForPresence;
@@ -31,7 +33,9 @@ public class UInegativeTest {
     }
 
     @Parameters({"exp"})
+    @Story("Check style of page elements")
     @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Step("Check if style is {color}")
     public void checkStyleSecond(String color) throws InterruptedException {
         driver.get(PropertyLoader.getProperty("uaLink"));
         By callBack = By.xpath("//a[@class='callback-btn']");
@@ -63,12 +67,17 @@ public class UInegativeTest {
         String actualSecond = phoneEl.getAttribute("style");
         System.out.println(actualSecond);
         String expectedSecond = color;
-        assertNotEquals(actualSecond, expectedSecond,
+        assertEquals(actualSecond, expectedSecond,
                 String.format("Expected %s to be equal %s", actualSecond, expectedSecond));
     }
 
     @AfterMethod
     public void tearDown () {
+        saveScreenshot();
         driver.quit();
+    }
+    @Attachment(value = "screen", type = "image/png")
+    private byte[] saveScreenshot() {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }

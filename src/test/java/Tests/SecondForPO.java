@@ -1,5 +1,7 @@
 package test.java.Tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +15,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
+@Epic("Page Object")
 public class SecondForPO extends BaseTest {
     EveningCoursesPage eveningCoursesPage;
     @BeforeMethod
@@ -56,6 +59,7 @@ public class SecondForPO extends BaseTest {
         };
     }
 
+    @Story("Check courses list")
     @Test(dataProvider = "Courses")
     public void checkCourses(Object[] s)  {
         List<String> actualList;
@@ -78,6 +82,7 @@ public class SecondForPO extends BaseTest {
         assertEquals(actualList, expectedList);
     }
 
+    @Story("Check default conditions before buying")
     @Test(dataProvider = "CoursesBuy")
     public void checkCoursesBuy(Object[] s) {
         String courseName = s[0].toString();

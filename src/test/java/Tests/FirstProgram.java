@@ -1,10 +1,12 @@
 package test.java.Tests;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +18,7 @@ import org.testng.annotations.Test;
 import test.java.utils.PropertyLoader;
 import test.java.utils.RetryAnalyzer;
 
+@Epic("Without PO")
 public class FirstProgram {
     WebDriver driver;
     WebDriverWait waitForPresence;
@@ -32,7 +35,9 @@ public class FirstProgram {
     }
 
     @Parameters({"itea", "num"})
+    @Story("Check phone number")
     @Test
+    @Step("Checking phone format {numbers} for page {link}")
     public void checkPhone(String link, String numbers) throws InterruptedException {
         driver.get(link);
         logger.debug("Home page was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
@@ -55,6 +60,11 @@ public class FirstProgram {
 
     @AfterMethod
     public void tearDown() {
+        saveScreenshot();
         driver.quit();
+    }
+    @Attachment(value = "screen", type = "image/png")
+    private byte[] saveScreenshot() {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
