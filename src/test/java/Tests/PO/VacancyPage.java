@@ -1,5 +1,7 @@
 package test.java.Tests.PO;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Epic("Page Object")
 public class VacancyPage {
     WebDriver driver;
     WebDriverWait wait;
@@ -18,6 +21,7 @@ public class VacancyPage {
         logger.debug("Class " + VacancyPage.class + " initialized with driver");
         logger.info("Start initializing class");
     }
+    @Step("Select Vacancy {vacancy}")
     public VacancyPage selectVacancy (String vacancy) {
         System.out.println(vacancy);
         WebElement uxVacancy = driver.findElement(By.xpath("//a//h2[text()='" + vacancy + "']"));
@@ -27,6 +31,7 @@ public class VacancyPage {
         logger.info("Vacancy was selected");
         return this;
     }
+    @Step("Input Name {name}")
     public VacancyPage setName(String name) {
         WebElement nameInput = driver.findElement(By.id("names"));
         wait.until(ExpectedConditions.elementToBeClickable(nameInput));
@@ -35,6 +40,7 @@ public class VacancyPage {
         logger.info("Name was input");
         return this;
     }
+    @Step("Input Email {email}")
     public VacancyPage setEmail(String email) {
         WebElement emailInput = driver.findElement(By.id("email"));
         wait.until(ExpectedConditions.elementToBeClickable(emailInput));
@@ -43,6 +49,7 @@ public class VacancyPage {
         logger.info("Email was input");
         return this;
     }
+    @Step("Click Submit button")
     public VacancyPage submit() {
         WebElement submitBtn = driver.findElement(By.xpath("//div[@class='submit-btn']/input[@name='ok']"));
         submitBtn.click();
@@ -50,6 +57,7 @@ public class VacancyPage {
         logger.info("Submit Btn was clicked");
         return this;
     }
+    @Step("Check Error message")
     public String getPhoneErrorMsg() {
         WebElement phoneMsg = driver.findElement(By.xpath("(//label[@for='telephone']/span)[2]"));
         wait.until(ExpectedConditions.visibilityOf(phoneMsg));

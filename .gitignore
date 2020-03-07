@@ -1,1 +1,8 @@
-.idea
+.idea/
+target/
+WebDriverProject.iml
+*.exe
+logs/
+screenshots/
+allure-results/
+

@@ -1,10 +1,12 @@
 package test.java.Tests;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,6 +21,7 @@ import test.java.utils.RetryAnalyzer;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+@Epic("Without PO")
 public class UIpositiveTest {
     WebDriver driver;
     WebDriverWait waitForPresence;
@@ -34,9 +37,11 @@ public class UIpositiveTest {
         logger.info("Start initializing class");
     }
 
-    @Parameters({"phone"})
+    @Parameters({"name", "phone"})
+    @Story("Check callback message")
     @Test
-    public void checkStyleFirst(String ph) throws InterruptedException {
+    @Step("Put name {name} and phone number {phone} for checking callback style")
+    public void checkStyleFirst(String name, String phone) throws InterruptedException {
         driver.get(PropertyLoader.getProperty("uaLink"));
         logger.debug("HomePage was opened," + driver.getCurrentUrl() + ", method is working, Url is available");
         logger.info("HomePage was opened");
@@ -49,14 +54,14 @@ public class UIpositiveTest {
         By nameInput = By.xpath("//input[@name='name']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(nameInput));
         WebElement nameEl = driver.findElement(nameInput);
-        nameEl.sendKeys("Vasiliy Pupkin");
+        nameEl.sendKeys(name);
         logger.debug("Name Vasiliy Pupkin was input, method is working, locator is available");
         logger.info("Name Vasiliy Pupkin was input");
 
         By phoneInput = By.xpath("//input[@name='phone']");
         waitForPresence.until(ExpectedConditions.elementToBeClickable(phoneInput));
         WebElement phoneEl = driver.findElement(phoneInput);
-        phoneEl.sendKeys(ph);
+        phoneEl.sendKeys(phone);
         logger.debug("Phone number was input, method is working, locator is available");
         logger.info("Phone number was input");
 
@@ -78,14 +83,19 @@ public class UIpositiveTest {
 
         String expected = "Дякуємо!\n" +
                 "Наш менеджер зв'яжеться з Вами.";
-        assertNotEquals(actual, expected,
+        assertEquals(actual, expected,
                 String.format("Expected %s to be equal %s", expected, actual));
         logger.debug("Callback Msg was right, method is worked, locator is available");
         logger.info("Callback Msg was right");
     }
     @AfterMethod
     public void tearDown() {
+        saveScreenshot();
         driver.quit();
+    }
+    @Attachment(value = "screen", type = "image/png")
+    private byte[] saveScreenshot() {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
 
